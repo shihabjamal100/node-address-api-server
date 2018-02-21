@@ -1,4 +1,5 @@
 const axios = require('axios');
+const {googleApiKey} = require('../config/keys');
 
 const ROOT_URL = 'https://maps.googleapis.com/maps/api/geocode/json?';
 
@@ -17,14 +18,14 @@ const addressFromUrl = async (url) => {
 const addressFromLonLat = (lon, lat) => {
     // Use Google Maps API to determine the actual address
     // from the longitude and lattitude and return a promise.
-    const url = `${ROOT_URL}latlng=${lat},${lon}`;
+    const url = `${ROOT_URL}latlng=${lat},${lon}&key=${googleApiKey}`;
     return addressFromUrl(url);
 }
 
 const addressFromAddress = (address) => {
     // Use Google Maps API to look up the actual address
     // from the address provided and return a promise.
-    const url = `${ROOT_URL}address=${encodeURIComponent(address)}`;
+    const url = `${ROOT_URL}address=${encodeURIComponent(address)}&key=${googleApiKey}`;
     return addressFromUrl(url);
 }
 

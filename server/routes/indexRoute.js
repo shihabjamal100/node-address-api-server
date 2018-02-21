@@ -17,6 +17,6 @@ module.exports = (app) => {
             return body;
         });
 
-        res.send(result.response);
+        res.send(result);
     });
 }

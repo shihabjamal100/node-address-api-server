@@ -11,14 +11,19 @@ module.exports = (req, res, next) => {
         return errorHandler(res);
     }
 
-    // Loop through all the items in the payload array and
-    // ensure that they contain the properties stipulated in
-    // the schema
-    req.body.payload.forEach(element => {
-        if (validator.validate(element, schema).errors.length != 0) {
-            return errorHandler(res);
-        }
-    });
+    try {
+        // Loop through all the items in the payload array and
+        // ensure that they contain the properties stipulated in
+        // the schema
+        req.body.payload.forEach(element => {
+            if (validator.validate(element, schema).errors.length != 0) {
+                throw new Error();
+            }
+        });
+    }
+    catch(e) {
+        return errorHandler(res);
+    }
 
     next();
 }
