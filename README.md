@@ -86,13 +86,21 @@ are included in the response. In addition the server verifies that the addresses
 finds concatenated addresses for each of the request arrays. The response to the aboove request should be the following:
 
 {
+    
     "response": [
+        
         {
+            
             "concataddress": "28 Donington Ave, Georges Hall NSW 2198",
+            
             "type": "htv",
+            
             "workflow": "completed"
+        
         }
+    
     ]
+
 }
 
 Addresses may be specified by the full address or by longitude and lattitude or both. The longitude and lattitude takes precedence in
@@ -101,7 +109,9 @@ verifying the addresses.
 The server also handles errors if the request is invalid. The error response that is sent out is in the following format:
 
 {
+    
     "error": "Could not decode request: JSON parsing failed"
+
 }
 
 The error could be caused by the following conditions:
@@ -116,7 +126,9 @@ none of the "type" properties are "htv" and/or none of the "workflow" properties
 be sent like below:
 
 {
+    
     "response": []
+
 }
 
 Just POST the request data to the root route '/' to get the response.
@@ -128,5 +140,7 @@ be named dev.js.
 The contents of the server/config/dev.js file should be in the following format:
 
 module.exports = {
+    
     googleApiKey: 'Enter_Your_Google_Maps_API_Key'
+
 };
